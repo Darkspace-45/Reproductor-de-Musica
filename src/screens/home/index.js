@@ -33,7 +33,7 @@ export default function Home() {
       <div className="main-body">
         <SideBar />
         <Routes>
-          <Route path='/library' element={<Library />} />
+          <Route path='/' element={<Library />} />
           <Route path='/feed' element={<Feed />} />
           <Route path='/trending' element={<Trending />} />
           <Route path='/player' element={<Player />} />
