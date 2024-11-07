@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import APIKit from '../../spotify';
+import './library.css'
 
 export default function Library() {
   const [playlists, setPlaylists] = useState(null);
@@ -13,9 +14,11 @@ export default function Library() {
 
   return (
     <div className='screen-container'>
-      {playlists?.map(playlist => 
-        <div>{playlist.name}</div>
-      )}
+      <div className='library-body'>
+        {playlists?.map((playlist =>
+          <div className='playlist-card'>{playlist.name}</div>
+        ))}
+      </div>
     </div>
   );
 }
