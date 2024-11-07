@@ -13,9 +13,9 @@ export default function Library() {
 
   return (
     <div className='screen-container'>
-      {playlists?.map(playlist => {
-        <div></div>;
-      })}
+      {playlists?.map(playlist => 
+        <div>{playlist.name}</div>
+      )}
     </div>
   );
 }
