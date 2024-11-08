@@ -11,15 +11,16 @@ export default function Queue({ tracks, setCurrentIndex }) {
                 <p className='upNext'>Siguiente</p>
                 <div className='queue-list'>
                     {tracks?.map((track, index) => (
-                        <div className='queue-item flex' 
-                        onClick={() => setCurrentIndex(index)}
-                        key={index}>
+                        <div key={index + "key"}
+                        className='queue-items flex' 
+                        onClick={() => setCurrentIndex(index)}>
+
                             <p className='track-name'>{track?.track?.name}</p>
-                            <p>0:30</p>
+                            <p>6:00</p>
                         </div>
                     ))}
                 </div>
             </div>
         </div>
-    )
+    );
 }
