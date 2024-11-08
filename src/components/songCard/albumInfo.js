@@ -15,10 +15,10 @@ export default function AlbumInfo({ album }) {
                 <p>{album?.name + "-" + artists?.join(", ")}</p>
             </div>
             <div className="album-info">
-                <p>{`${album?.name} is ${album?.album_type} by ${artists?.join(", ")} with ${album?.total_tracks} track(s)`}</p>
+                <p>{`${album?.name} es un ${album?.album_type} hecho por ${artists?.join(", ")} y tiene ${album?.total_tracks} canciones`}</p>
             </div>
             <div className="album-release">
-                <p>Release Date: {album?.release_date}</p>
+                <p>Fecha de Lanzamiento: {album?.release_date}</p>
             </div>
         </div>
     )
