@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './player.css'
 import { useLocation } from 'react-router-dom'
 import apiClient from '../../spotify';
@@ -23,7 +23,7 @@ export default function Player() {
   }, [location.state]);
 
   return (
-    <div className='screen-container'>
+    <div className='screen-container flex'>
       <div className='left-player-body'></div>
       <div className='right-player-body'>
         <SongCard track={currentTrack} />

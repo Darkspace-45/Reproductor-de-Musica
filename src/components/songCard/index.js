@@ -3,6 +3,6 @@ import './songCard.css'
 
 export default function SongCard() {
     return (
-        <div>SongCard</div>
+        <div className='songCard-body'></div>
     )
 }

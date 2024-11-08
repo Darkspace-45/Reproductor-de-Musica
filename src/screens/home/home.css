@@ -1,6 +1,6 @@
 .main-body{
-    height: 98vh solid;
-    width: 99vw solid;
+    height: 100vh ;
+    width: 100vw ;
     background-color: #6c2e9e;
     border-radius: 30px;
     display: flex;
