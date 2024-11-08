@@ -22,13 +22,17 @@ export default function Player() {
     }
   }, [location.state]);
 
+  useEffect(() => {
+    setCurrentTrack(tracks[currentIndex].track);
+  }, [currentIndex, tracks]);
+
   return (
     <div className='screen-container flex'>
       <div className='left-player-body'></div>
       <div className='right-player-body'>
         <SongCard album={currentTrack.album} />
-        <Queue  />
+        <Queue tracks={tracks} setCurrentIndex={setCurrentIndex} />
       </div>
     </div>
-  )
+  );
 }

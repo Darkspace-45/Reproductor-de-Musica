@@ -10,12 +10,14 @@ export default function AlbumInfo({ album }) {
     })
 
     return (
-        <div>
+        <div className='albumInfo-card'>
             <div className="albumName-container">
-                <p>{album?.name + "-" + artists?.join(", ")}</p>
+                <div className="marquee">
+                    <p>{album?.name + "-" + artists?.join(", ")}</p>
+                </div>
             </div>
             <div className="album-info">
-                <p>{`${album?.name} es un ${album?.album_type} hecho por ${artists?.join(", ")} y tiene ${album?.total_tracks} canciones`}</p>
+                <p>{`${album?.name} es un ${album?.album_type} hecho por ${artists?.join(", ")} tiene ${album?.total_tracks} canciones`}</p>
             </div>
             <div className="album-release">
                 <p>Fecha de Lanzamiento: {album?.release_date}</p>
