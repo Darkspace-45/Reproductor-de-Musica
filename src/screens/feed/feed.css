@@ -1,0 +1,58 @@
+
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.carrusel {
+    padding: 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 900px;
+}
+
+.cancion {
+    text-align: center;
+    padding: 20px;
+}
+
+.portada {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+button:hover {
+    color: #1db954;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .portada {
+        width: 150px;
+        height: 150px;
+    }
+
+    .carrusel {
+        flex-direction: column;
+    }
+
+    button {
+        font-size: 1.5rem;
+    }
+}
