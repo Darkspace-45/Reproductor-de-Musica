@@ -30,9 +30,7 @@ export default function SideBar() {
       <img src={image} className='profile-img' alt='Profile' />
       <div>
         <SideBarButton title="Feed" to="/feed" icon={<AiFillHome />} />
-        <SideBarButton title="Trending" to="/trending" icon={<AiFillFire />} />
         <SideBarButton title="Player" to="/player" icon={<BsFillMusicPlayerFill />} />
-        <SideBarButton title="Favorites" to="/favorites" icon={<AiOutlineHeart />} />
         <SideBarButton title="Library" to="/" icon={<MdLibraryMusic />} />
       </div>
       <SideBarButton
