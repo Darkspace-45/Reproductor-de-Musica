@@ -23,15 +23,15 @@ export default function Library() {
 
   return (
     <div className='screen-container'>
-      <div className='library-body'>
+      <div className='library-bodyl'>
         {playlists?.map((playlist =>
-          <div className='playlist-card' key={playlist.id} onClick={() => playPlaylist(playlist.id)}>
+          <div className='playlist-cardl' key={playlist.id} onClick={() => playPlaylist(playlist.id)}>
             <img src={playlist.images[0].url}
-              className='playlist-image'
+              className='playlist-imagel'
               alt='Playlist-Art' />
-            <p className='playlist-title'>{playlist.name}</p>
-            <p className='playlist-subtitle'>{playlist.tracks.total} Canciones</p>
-            <div className='playlist-fade'>
+            <p className='playlist-titlel'>{playlist.name}</p>
+            <p className='playlist-subtitlel'>{playlist.tracks.total} Canciones</p>
+            <div className='playlist-fadel'>
               <IconContext.Provider value={{ size: "50px" , color: "#e99d72" }}>
                 <CgPlayButtonO />
               </IconContext.Provider>
