@@ -1,44 +1,78 @@
 import React, { useEffect, useState } from 'react';
-import Carousel from '../../components/carousel';
-import axios from 'axios';
-import { setClientToken } from '../../spotify';
+import apiClient, { getToken, setClientToken } from '../../spotify';
+import './feed.css';
 
-const Feed = () => {
-  const [canciones, setCanciones] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+export default function Feed() {
+  const [topTracks, setTopTracks] = useState([]);
+  const [playlists, setPlaylists] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = getToken();
+
     if (token) {
       setClientToken(token);
-      axios
-        .get('https://api.spotify.com/v1/me/top/tracks')
-        .then((response) => {
-          setCanciones(response.data.items);
-          setLoading(false);
+
+      apiClient.get("me/top/artists")
+        .then(response => {
+          setTopTracks(response.data.items);
         })
-        .catch((error) => {
-          setError('Hubo un error al cargar las canciones.');
-          setLoading(false);
+        .catch(error => {
+          console.error("Error al cargar las canciones:", error);
         });
-    } else {
-      setError('No se encontró el token de acceso.');
-      setLoading(false);
+
+      apiClient.get("me/playlists")
+        .then(response => {
+          setPlaylists(response.data.items);
+          setIsLoading(false);
+        })
+        .catch(error => {
+          console.error("Error al cargar las playlists:", error);
+          setIsLoading(false);
+        });
     }
   }, []);
 
-  if (loading) return <p>Cargando...</p>;
-  if (error) return <p>{error}</p>;
-
-  const images = canciones.map((song) => song.album.images[0].url);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div>
-      <h1>Top Canciones</h1>
-      <Carousel images={images} />
+    <div className="feed">
+      <h2>Top Tracks</h2>
+      <div className="top-tracks">
+        {topTracks.length > 0 ? (
+          topTracks.map((track, index) => (
+            <div key={index} className="track">
+              <img
+                src={track.album.images?.[0]?.url || 'https://via.placeholder.com/150'}
+                alt={track.name}
+              />
+              <h3>{track.name}</h3>
+              <p>{track.artists[0]?.name || 'Unknown Artist'}</p>
+            </div>
+          ))
+        ) : (
+          <div>No top tracks available</div>
+        )}
+      </div>
+
+      <h2>Playlists</h2>
+      <div className="playlists">
+        {playlists.length > 0 ? (
+          playlists.map((playlist, index) => (
+            <div key={index} className="playlist">
+              <img
+                src={playlist.images?.[0]?.url || 'https://via.placeholder.com/150'}
+                alt={playlist.name}
+              />
+              <h3>{playlist.name}</h3>
+            </div>
+          ))
+        ) : (
+          <div>No playlists available</div>
+        )}
+      </div>
     </div>
   );
-};
-
-export default Feed;
+}

@@ -1,58 +1,180 @@
+/* feed.css */
 
-.App {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Contenedor principal */
+.feed {
+    padding: 30px;
+    background: #121212;
+    color: #fff;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    font-family: 'Poppins', sans-serif;
 }
 
-.carrusel {
-    padding: 0px 0px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-    max-width: 900px;
+/* Títulos principales */
+h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    color: #fff;
+    text-transform: uppercase;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 10px;
 }
 
-.cancion {
-    text-align: center;
-    padding: 20px;
+/* Sección de canciones */
+.top-tracks,
+.playlists {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
 }
 
-.portada {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-button {
-    background-color: transparent;
-    border: none;
-    font-size: 2rem;
+.track,
+.playlist {
+    position: relative;
+    background: #1f1f1f;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    color: #333;
-    transition: color 0.3s ease;
 }
 
-button:hover {
-    color: #1db954;
+.track:hover,
+.playlist:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilos responsivos */
+/* Imágenes de las canciones y playlists */
+.track img,
+.playlist img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+    transition: transform 0.4s ease-in-out;
+}
+
+.track:hover img,
+.playlist:hover img {
+    transform: scale(1.1);
+}
+
+/* Descripción de la canción o playlist */
+.track h3,
+.playlist h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+.track p,
+.playlist p {
+    font-size: 14px;
+    color: #aaa;
+    text-align: center;
+    margin-top: 5px;
+    padding: 0 10px;
+}
+
+/* Contenedor para la lista de canciones */
+.top-tracks {
+    margin-top: 20px;
+}
+
+.playlists {
+    margin-top: 60px;
+}
+
+/* Efecto al pasar el cursor sobre el contenedor de la canción */
+.track:hover .overlay,
+.playlist:hover .overlay {
+    opacity: 1;
+}
+
+/* Superposición al hacer hover */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 15px;
+}
+
+.overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+
+.overlay-content h4 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.overlay-content p {
+    font-size: 14px;
+    color: #ddd;
+}
+
+/* Responsividad */
 @media (max-width: 768px) {
-    .portada {
-        width: 150px;
-        height: 150px;
+    .feed {
+        padding: 20px;
     }
 
-    .carrusel {
-        flex-direction: column;
+    h2 {
+        font-size: 26px;
+        margin-bottom: 20px;
     }
 
-    button {
-        font-size: 1.5rem;
+    .top-tracks,
+    .playlists {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .track h3,
+    .playlist h3 {
+        font-size: 16px;
+    }
+
+    .track p,
+    .playlist p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .top-tracks,
+    .playlists {
+        grid-template-columns: 1fr;
+    }
+
+    h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    .track h3,
+    .playlist h3 {
+        font-size: 14px;
+    }
+
+    .track p,
+    .playlist p {
+        font-size: 10px;
     }
 }
